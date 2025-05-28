@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-from menu import run_hamilton_mode, run_non_hamilton_mode, print_usage_and_exit
+from menu import generate_graph_mode, print_usage_and_exit
 
 def main():
     args = sys.argv[1:]
@@ -9,9 +9,9 @@ def main():
         print_usage_and_exit()
 
     if args[0] == "--hamilton":
-        run_hamilton_mode()
+        generate_graph_mode(expect_saturation=True)
     elif args[0] == "--non-hamilton":
-        run_non_hamilton_mode()
+        generate_graph_mode(expect_saturation=False)
 
 if __name__ == "__main__":
     main()
