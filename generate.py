@@ -74,8 +74,9 @@ def generate_hamiltonian_graph(n: int, count: int) -> list[Linked_List]:
         adjacency_dict[i].sort() # Sort for nice looking output
         for neighbor in adjacency_dict[i]:
             adjacency_list[i].InsertAtEnd(neighbor + 1)
-            
+
     return adjacency_list
-    
-for i in generate_hamiltonian_graph(10, 70):
-    i.display()  # Display the generated Hamiltonian graph
+
+if __name__ == "__main__":  
+    for i in generate_hamiltonian_graph(10, 70):
+        i.display()  # Display the generated Hamiltonian graph
