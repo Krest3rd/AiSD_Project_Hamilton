@@ -1,4 +1,7 @@
 import sys
+from generate import generate_hamiltonian_graph as generate_hamilton, calculate_nuber_of_edges as count_edges, generate_non_hamiltonian_graph as generate_non_hamilton
+from commands import help, print_graph
+
 
 graph_data = None
 
@@ -51,14 +54,16 @@ def command_handler():
         if choice == "help":
             help()
         elif choice == "print":
-            #placceholder for print functionality
-            print("Printing the graph...")
+            print_graph(graph_data)
         elif choice == "euler":
             #placeholder for Euler cycle functionality
             print("Finding Euler cycle...")
         elif choice == "hamilton":
             #placeholder for Hamilton cycle functionality
             print("Finding Hamilton cycle...")
+        elif choice == "export":
+            #placeholder for export functionality
+            print("Exporting graph to TikZ...")
         elif choice == "exit":
             print("Exiting the program.")
             sys.exit(0)
@@ -67,22 +72,15 @@ def command_handler():
 
         
 
-def run_hamilton_mode():
-    print("=== Hamilton Graph  ===")
-    nodes, saturation = prompt_graph_input(expect_saturation=True)
+def generate_graph_mode(expect_saturation=True):
+    print(f"=== {'' if expect_saturation else 'Non '}Hamilton Graph  ===")
+    nodes, saturation = prompt_graph_input(expect_saturation)
 
     global graph_data
-#    #graph_data = hamilton generation
-    print("Hamilton Graph generated!")
-
-    command_handler()
-
-def run_non_hamilton_mode():
-    print("=== Non-hamilton Graph ===")
-    nodes, _ = prompt_graph_input(expect_saturation=False)
-
-    global graph_data
-#   graph_data = generate_non_hamilton_graph
-    print("Non-gamilton Graph generated!")
+    if expect_saturation:
+        graph_data = generate_hamilton(nodes, count_edges(nodes, saturation))
+    else:
+        graph_data = generate_non_hamilton(nodes, count_edges(nodes, 50))
+    print(f"{'' if expect_saturation else 'Non '}Hamilton Graph generated!")
 
     command_handler()
