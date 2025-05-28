@@ -77,6 +77,23 @@ def generate_hamiltonian_graph(n: int, count: int) -> list[Linked_List]:
 
     return adjacency_list
 
+def calculate_nuber_of_edges(n:int, saturation: int) -> int:
+    """
+    Calculate the number of edges based on the number of vertices and saturation degree.
+    
+    :param n: Number of vertices in the graph
+    :param saturation: Saturation degree (percentage)
+    :return: Number of edges
+    """
+    if n <= 0 or saturation < 0 or saturation > 100:
+        raise ValueError("Number of vertices must be positive and saturation must be between 0 and 100.")
+    
+    # Calculate the maximum number of edges in a complete graph
+    max_edges = n * (n - 1) // 2
+    
+    # Calculate the number of edges based on saturation
+    return (max_edges * saturation) // 100
+
 if __name__ == "__main__":  
     for i in generate_hamiltonian_graph(10, 70):
         i.display()  # Display the generated Hamiltonian graph
