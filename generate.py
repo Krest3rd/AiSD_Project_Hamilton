@@ -3,7 +3,7 @@ from random import shuffle,sample
 
 def generate_hamiltonian_graph(n: int, count: int) -> list[Linked_List]:
     """
-    Generate a Hamiltonian graph with n vertices and a saturation degree.
+    Generate a Hamiltonian graph with n vertices and a count edges.
     
     :param n: Number of vertices in the graph
     :param count: Minimum number of edges
@@ -77,6 +77,22 @@ def generate_hamiltonian_graph(n: int, count: int) -> list[Linked_List]:
 
     return adjacency_list
 
+
+def generate_non_hamiltonian_graph(n: int, count: int) -> list[Linked_List]:
+    """
+    Generate a non-Hamiltonian graph with n vertices and count edges.
+
+    :param n: Number of vertices in the graph
+    :param count: Minimum number of edges
+    :return: List of linked lists representing the adjacency list of the graph
+    """
+    graph = generate_hamiltonian_graph(n-1, count)
+    graph.append(Linked_List())
+    graph[-1].InsertAtEnd(n)  # Add the last vertex as an isolated node
+
+    return graph
+
+
 def calculate_nuber_of_edges(n:int, saturation: int) -> int:
     """
     Calculate the number of edges based on the number of vertices and saturation degree.
@@ -94,6 +110,12 @@ def calculate_nuber_of_edges(n:int, saturation: int) -> int:
     # Calculate the number of edges based on saturation
     return (max_edges * saturation) // 100
 
-if __name__ == "__main__":  
-    for i in generate_hamiltonian_graph(10, 70):
+
+if __name__ == "__main__":
+    count = calculate_nuber_of_edges(10, 70)  # Calculate the number of edges for a graph with 10 vertices and 70% saturation
+    for i in generate_hamiltonian_graph(10, count):
         i.display()  # Display the generated Hamiltonian graph
+    
+    print("Non-Hamiltonian Graph:")
+    for i in generate_non_hamiltonian_graph(10, count):
+        i.display()  # Display the generated non-Hamiltonian graph
