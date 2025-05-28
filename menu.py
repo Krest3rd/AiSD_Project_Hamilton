@@ -1,6 +1,6 @@
 import sys
 from generate import generate_hamiltonian_graph as generate_hamilton, calculate_nuber_of_edges as count_edges, generate_non_hamiltonian_graph as generate_non_hamilton
-from commands import help, print_graph
+from commands import show_commands, print_graph, find_euler_cycle, find_hamilton_cycle
 
 
 graph_data = None
@@ -12,12 +12,17 @@ def print_usage_and_exit():
 def prompt_graph_input(expect_saturation=False):
     try:
         nodes = int(input("nodes> ").strip())
+        if nodes < 2:
+            raise ValueError
         saturation = None
         if expect_saturation:
             saturation = int(input("saturation> ").strip())
+            if saturation < 0 or saturation > 100:
+                raise ValueError
+            
         return nodes, saturation
     except ValueError:
-        print("Invalid input. Please enter integers.")
+        print("Invalid input. Number of nodes must be greater than 1 and saturation must be an integer between 0 and 100.")
         sys.exit(1)
     except EOFError:
         print("Ctrl+D detected. Exiting.")
@@ -52,15 +57,15 @@ def command_handler():
             sys.exit(1)
 
         if choice == "help":
-            help()
+            show_commands()
         elif choice == "print":
             print_graph(graph_data)
         elif choice == "euler":
-            #placeholder for Euler cycle functionality
             print("Finding Euler cycle...")
+            find_euler_cycle(graph_data)
         elif choice == "hamilton":
-            #placeholder for Hamilton cycle functionality
             print("Finding Hamilton cycle...")
+            find_hamilton_cycle(graph_data)
         elif choice == "export":
             #placeholder for export functionality
             print("Exporting graph to TikZ...")
