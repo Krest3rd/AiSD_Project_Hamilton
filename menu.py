@@ -1,9 +1,11 @@
 import sys
 from generate import generate_hamiltonian_graph as generate_hamilton, calculate_nuber_of_edges as count_edges, generate_non_hamiltonian_graph as generate_non_hamilton
-from commands import show_commands, print_graph, find_euler_cycle, find_hamilton_cycle, export_to_tikz, goodbye
+from commands_cycles import find_euler_cycle, find_hamilton_cycle
+from commands_export import export_to_tikz
+from commands_else import show_commands, print_graph, goodbye
 from decoration import header
 from invalid import invalid_command,invalid_input, invalid_eof, invalid_keyboard_interrupt, invalid_usage
-from lists import Linked_List
+
 
 graph_data = None
 
