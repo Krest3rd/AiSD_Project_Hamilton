@@ -28,6 +28,7 @@ def help():
     print("""
 ============= Commands ==============
 Print -\tprints the graph
+Export -\texports the graph to tikzpicture
 Euler -\tfinds Euler cycle
 Hamilton- finds Hamilton cycle
 Help -\tdisplays this help message
