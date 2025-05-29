@@ -1,4 +1,4 @@
-from lists import Linked_List
+from lists import Linked_List #type: ignore
 from random import shuffle,sample
 
 def generate_hamiltonian_graph(n: int, count: int) -> list[Linked_List]:

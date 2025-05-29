@@ -1,6 +1,9 @@
 import math
 from copy import deepcopy
 from decoration import header, footer,line,print_text_multiline
+from lists import Linked_List
+
+
 
 def show_commands():
     header("AVAILABLE COMMANDS")

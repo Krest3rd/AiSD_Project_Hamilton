@@ -3,6 +3,8 @@ from generate import generate_hamiltonian_graph as generate_hamilton, calculate_
 from commands import show_commands, print_graph, find_euler_cycle, find_hamilton_cycle, export_to_tikz, goodbye
 from decoration import header
 from invalid import invalid_command,invalid_input, invalid_eof, invalid_keyboard_interrupt, invalid_usage
+from lists import Linked_List
+
 graph_data = None
 
 
