@@ -31,6 +31,21 @@ def prompt_graph_input(expect_saturation=False):
         print("\nCtrl+C detected. Exiting.")
         sys.exit(1)
 
+def help():
+    print("Available commands:")
+    print("""
+============= Commands ==============
+Print -\tprints the graph
+Export -\texports the graph to tikzpicture
+Euler -\tfinds Euler cycle
+Hamilton- finds Hamilton cycle
+Help -\tdisplays this help message
+Exit -\texits the program
+=====================================
+          """)
+    command_handler()
+    
+=======
 def command_handler():    
     while True:
         try:
