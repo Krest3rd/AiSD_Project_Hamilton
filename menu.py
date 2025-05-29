@@ -1,6 +1,8 @@
 import sys
 from generate import generate_hamiltonian_graph as generate_hamilton, calculate_nuber_of_edges as count_edges, generate_non_hamiltonian_graph as generate_non_hamilton
-from commands import show_commands, print_graph, find_euler_cycle, find_hamilton_cycle
+from commands import show_commands, print_graph, export_graph
+from cycles import find_euler_cycle, find_hamilton_cycle
+from lists import Linked_List
 
 
 graph_data = None
@@ -12,17 +14,12 @@ def print_usage_and_exit():
 def prompt_graph_input(expect_saturation=False):
     try:
         nodes = int(input("nodes> ").strip())
-        if nodes < 2:
-            raise ValueError
         saturation = None
         if expect_saturation:
             saturation = int(input("saturation> ").strip())
-            if saturation < 0 or saturation > 100:
-                raise ValueError
-            
         return nodes, saturation
     except ValueError:
-        print("Invalid input. Number of nodes must be greater than 1 and saturation must be an integer between 0 and 100.")
+        print("Invalid input. Please enter integers.")
         sys.exit(1)
     except EOFError:
         print("Ctrl+D detected. Exiting.")
@@ -30,22 +27,7 @@ def prompt_graph_input(expect_saturation=False):
     except KeyboardInterrupt:
         print("\nCtrl+C detected. Exiting.")
         sys.exit(1)
-
-def help():
-    print("Available commands:")
-    print("""
-============= Commands ==============
-Print -\tprints the graph
-Export -\texports the graph to tikzpicture
-Euler -\tfinds Euler cycle
-Hamilton- finds Hamilton cycle
-Help -\tdisplays this help message
-Exit -\texits the program
-=====================================
-          """)
-    command_handler()
     
-=======
 def command_handler():    
     while True:
         try:
@@ -68,8 +50,8 @@ def command_handler():
             print("Finding Hamilton cycle...")
             find_hamilton_cycle(graph_data)
         elif choice == "export":
-            #placeholder for export functionality
             print("Exporting graph to TikZ...")
+            export_graph(graph_data)
         elif choice == "exit":
             print("Exiting the program.")
             sys.exit(0)
