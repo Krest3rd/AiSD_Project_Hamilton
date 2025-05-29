@@ -2,7 +2,13 @@ from lists import Linked_List
 from copy import deepcopy
 from decoration import header, footer, line, print_text_multiline
 
-def find_euler_cycle(graph_data):
+def find_euler_cycle(graph_data: list[Linked_List]) -> None:
+    """
+    Find an Euler cycle in the given graph represented as a list of linked lists.
+
+    :param graph_data: List of Linked_List objects representing the adjacency list of the graph.
+    :return: None (prints the Euler cycle if found, otherwise indicates failure).
+    """
     
     n = len(graph_data)
     adjacency_dict = {i+1: [] for i in range(n)}
@@ -44,7 +50,15 @@ def find_euler_cycle(graph_data):
         header("EULER CYCLE NOT FOUND","\\!/")
         print("Euler cycle not found (graph may be disconnected).")
         footer("\\!/")
-def find_hamilton_cycle(graph_data):
+
+
+def find_hamilton_cycle(graph_data: list[Linked_List]) -> None:
+    """
+    Find a Hamiltonian cycle in the given graph represented as a list of linked lists.
+
+    :param graph_data: List of Linked_List objects representing the adjacency list of the graph.
+    :return: None (prints the Hamiltonian cycle if found, otherwise indicates failure).
+    """
     n = len(graph_data)
     path = [1]  
 
