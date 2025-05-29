@@ -32,13 +32,13 @@ class Linked_List:
     # Display the linked list
     def display(self):
         if  len(self) == 1:
-            print(self.head.data,"->None",sep="")
+            print(self.head.data," ->None",sep="")
             return
         if not self.head:
             return
         current_node = self.head
         while current_node.next:
-            print(current_node.data, end="->")
+            print(current_node.data, end=" -> ")
             current_node = current_node.next
         print(current_node.data)
 

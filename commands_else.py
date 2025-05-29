@@ -14,7 +14,7 @@ Exit -\texits the program""")
 def goodbye():
     header("Exiting the program...", pattern="-")
 
-def print_graph(graph_data):
+def print_graph(graph_data: list[Linked_List]) -> None:
     header("GRAPH")
     for node in graph_data:
         node.display()
