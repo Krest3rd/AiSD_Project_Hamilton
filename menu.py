@@ -45,6 +45,7 @@ Exit -\texits the program
           """)
     command_handler()
     
+=======
 def command_handler():    
     while True:
         try:
