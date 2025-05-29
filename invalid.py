@@ -10,7 +10,6 @@ def invalid_command():
     print_text_multiline("Please enter a valid command or type 'help' for assistance.", width=43)
     footer("-",length=43)
 
-
 def invalid_input():
     line("-", length=58)
     print_text_multiline("Invalid input. Number of nodes must be greater than 1 and saturation must be an integer between 0 and 100.", width=58)

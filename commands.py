@@ -57,7 +57,7 @@ def find_euler_cycle(graph_data):
         header("EULER CYCLE FOUND")
         print("Euler cycle found:")
         line("-")
-        print_text_multiline(path[::-1],width, path=True)
+        print_text_multiline(path[::-1], path=True)
         footer()
     else:
         header("EULER CYCLE NOT FOUND","\\!/")
@@ -96,7 +96,7 @@ def find_hamilton_cycle(graph_data):
         header("HAMILTON CYCLE FOUND")
         print("Hamiltonian cycle found:")
         line("-")
-        print_text_multiline(path,width, path=True)
+        print_text_multiline(path, path=True)
         footer()
     else:
         header("HAMILTON CYCLE NOT FOUND","\\!/")
