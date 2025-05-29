@@ -1,3 +1,5 @@
+#default length should be preferably divisible by 3
+#  'cuz /!\ is 3 characters long and it looks cool
 default_length = 42
 
 def line(pattern="",length=default_length):

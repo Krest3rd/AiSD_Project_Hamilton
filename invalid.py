@@ -11,9 +11,9 @@ def invalid_command():
     footer("-",length=43)
 
 def invalid_input():
-    line("-", length=58)
-    print_text_multiline("Invalid input. Number of nodes must be greater than 1 and saturation must be an integer between 0 and 100.", width=58)
-    line('-',length=58)
+    line("-")
+    print_text_multiline("Invalid input. Number of nodes must be greater than 1 and saturation must be an integer between 0 and 100.")
+    line('-')
     sys.exit(1)
 
 def invalid_eof():
