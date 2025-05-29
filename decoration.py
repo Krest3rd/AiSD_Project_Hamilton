@@ -1,19 +1,20 @@
 #default length should be preferably divisible by 3
 #  'cuz /!\ is 3 characters long and it looks cool
 default_length = 42
+default_pattern = "="
 
-def line(pattern="",length=default_length):
+def line(pattern=default_pattern,length=default_length):
     line = (pattern * length)[:length]
     print(line)
 
-def header(title,pattern="=",length=default_length):
+def header(title,pattern=default_pattern,length=default_length):
     print()
     line(pattern,length)
     print(f"{title:^{length}}")
     line(pattern,length)
     print()
 
-def footer(pattern="=",length=default_length):
+def footer(pattern=default_pattern,length=default_length):
     print()
     line(pattern,length)
     

@@ -9,24 +9,35 @@ def find_euler_cycle(graph_data: list[Linked_List]) -> None:
     :param graph_data: List of Linked_List objects representing the adjacency list of the graph.
     :return: None (prints the Euler cycle if found, otherwise indicates failure).
     """
-    
+
     n = len(graph_data)
     adjacency_dict = {i+1: [] for i in range(n)}
+    edge_count = 0
     for node, linked_list in enumerate(graph_data, start=1):
         current = linked_list.head
         while current:
-            if current.data != node: 
+            if current.data != node:
                 adjacency_dict[node].append(current.data)
+                edge_count += 1
             current = current.next
+
+    edge_count //= 2 
+
+    # Check if there are any edges at all
+    if edge_count == 0:
+        header("EULER CYCLE NOT FOUND", "\\!/")
+        print_text_multiline("Euler cycle not found (graph may be disconnected).")
+        footer("\\!/")
+        return
 
     # Check if all degrees are even - necessary condition for Euler cycle
     for node in adjacency_dict:
         if len(adjacency_dict[node]) % 2 != 0:
-            header("EULER CYCLE NOT FOUND","\\!/")
+            header("EULER CYCLE NOT FOUND", "\\!/")
             print("No Euler cycle: node", node, "has odd degree.")
             footer("\\!/")
             return
-        
+
     stack = [1]
     path = []
     local_adj = deepcopy(adjacency_dict)
@@ -40,14 +51,15 @@ def find_euler_cycle(graph_data: list[Linked_List]) -> None:
         else:
             path.append(stack.pop())
 
-    if len(path) == sum(len(neigh) for neigh in adjacency_dict.values()) // 2 + 1:
+    # The path must traverse all edges (edge_count + 1 vertices in path)
+    if len(path) == edge_count + 1 and edge_count > 0:
         header("EULER CYCLE FOUND")
         print("Euler cycle found:")
         line("-")
         print_text_multiline(path[::-1], path=True)
         footer()
     else:
-        header("EULER CYCLE NOT FOUND","\\!/")
+        header("EULER CYCLE NOT FOUND", "\\!/")
         print("Euler cycle not found (graph may be disconnected).")
         footer("\\!/")
 
@@ -59,6 +71,7 @@ def find_hamilton_cycle(graph_data: list[Linked_List]) -> None:
     :param graph_data: List of Linked_List objects representing the adjacency list of the graph.
     :return: None (prints the Hamiltonian cycle if found, otherwise indicates failure).
     """
+
     n = len(graph_data)
     path = [1]  
 
