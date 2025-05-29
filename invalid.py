@@ -9,7 +9,7 @@ def invalid_command():
     header("INVALID COMMAND", pattern="-", length=43)
     print_text_multiline("Please enter a valid command or type 'help' for assistance.", width=43)
     footer("-",length=43)
-    sys.exit(1)
+
 
 def invalid_input():
     line("-", length=58)

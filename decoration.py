@@ -9,9 +9,9 @@ def header(title,pattern="=",length=42):
     line(pattern,length)
     print()
 
-def footer(pattern="="):
+def footer(pattern="=",length=42):
     print()
-    line(pattern)
+    line(pattern,length)
     
 def print_text_multiline(text,width=42,path=False):
     if path:

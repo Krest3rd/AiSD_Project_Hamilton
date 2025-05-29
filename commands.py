@@ -15,9 +15,6 @@ Exit -\texits the program""")
 def goodbye():
     header("Exiting the program...", pattern="...")
 
-
-
-
 def print_graph(graph_data):
     header("GRAPH")
     for node in graph_data:
