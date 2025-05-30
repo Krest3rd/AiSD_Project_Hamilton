@@ -13,7 +13,7 @@ graph_data = None
 def prompt_graph_input(expect_saturation=False):
     try:
         nodes = int(input("nodes> ").strip())
-        if nodes < 2:
+        if nodes < 2 + (0 if expect_saturation else 1):
             raise ValueError
         saturation = None
         if expect_saturation:
@@ -23,7 +23,7 @@ def prompt_graph_input(expect_saturation=False):
             
         return nodes, saturation
     except ValueError:
-        invalid_input()
+        invalid_input(2 + (0 if expect_saturation else 1))
     except EOFError:
         invalid_eof()
     except KeyboardInterrupt:
