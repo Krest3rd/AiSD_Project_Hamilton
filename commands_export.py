@@ -45,7 +45,7 @@ def export_to_tikz(graph_data: list[Linked_List], filename: str="graph_tikz.tex"
 
     tikz_code = (
         "\\begin{tikzpicture}[\n"
-        f"{node_style},\n"
+        f"{node_style}\n"
         "]\n"
         + "\n".join(tikz_nodes)
         + "\n"
