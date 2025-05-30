@@ -10,11 +10,10 @@ def invalid_command():
     print_text_multiline("Please enter a valid command or type 'help' for assistance.", width=43)
     footer("-",length=43)
 
-def invalid_input():
+def invalid_input(n:int):
     line("-")
-    print_text_multiline("Invalid input. Number of nodes must be greater than 1 and saturation must be an integer between 0 and 100.")
+    print_text_multiline(f"Invalid input. Number of nodes must be greater than {n} and saturation must be an integer between 0 and 100.")
     line('-')
-    sys.exit(1)
 
 def invalid_eof():
     header("Ctrl+D detected. Exiting.", pattern="-")

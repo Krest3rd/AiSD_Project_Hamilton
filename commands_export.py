@@ -16,7 +16,7 @@ def export_to_tikz(graph_data: list[Linked_List], filename: str="graph_tikz.tex"
 
     # Node style as in your Overleaf code
     node_style = "\\begin{scope}[every node/.style={circle, draw=blue!60, fill=blue!5, thick, minimum size=8mm}]"
-    edge_style = "\\begin{scope}[every edge/.style={thick}]"
+    edge_style = "\\begin{scope}[edge/.style={thick}]"
 
     # Place nodes in a circle
     for i in range(n):
@@ -24,7 +24,7 @@ def export_to_tikz(graph_data: list[Linked_List], filename: str="graph_tikz.tex"
         x = radius * round(math.cos(angle), 6)
         y = radius * round(math.sin(angle), 6)
         tikz_nodes.append(
-            f"\t\\node[node] (v{i+1}) at ({x},{y}) {{{i+1}}};"
+            f"\t\\node (v{i+1}) at ({x},{y}) {{{i+1}}};"
         )
     tikz_nodes.append("\\end{scope}")  # Close the node scope
 
@@ -44,14 +44,14 @@ def export_to_tikz(graph_data: list[Linked_List], filename: str="graph_tikz.tex"
     tikz_edges_str +="\\end{scope}"
 
     tikz_code = (
-        "\\begin{tikzpicture}[\n"
-        f"{node_style},\n"
-        "]\n"
+        "\\begin{tikzpicture}\n"
+        f"{node_style}\n"
+        "\n"
         + "\n".join(tikz_nodes)
         + "\n"
         f"{edge_style}\n"
         + tikz_edges_str
-        + "\\end{tikzpicture}\n"
+        + "\n\\end{tikzpicture}\n"
     )
 
     with open(filename, "w") as f:
