@@ -44,14 +44,14 @@ def export_to_tikz(graph_data: list[Linked_List], filename: str="graph_tikz.tex"
     tikz_edges_str +="\\end{scope}"
 
     tikz_code = (
-        "\\begin{tikzpicture}[\n"
+        "\\begin{tikzpicture}\n"
         f"{node_style}\n"
-        "]\n"
+        "\n"
         + "\n".join(tikz_nodes)
         + "\n"
         f"{edge_style}\n"
         + tikz_edges_str
-        + "\\end{tikzpicture}\n"
+        + "\n\\end{tikzpicture}\n"
     )
 
     with open(filename, "w") as f:
