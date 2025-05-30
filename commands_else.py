@@ -5,7 +5,7 @@ def show_commands():
     header("AVAILABLE COMMANDS")
     print("""Print -\tprints the graph
 Euler -\tfinds Euler cycle
-Hamilton- finds Hamilton cycle
+Hamilton- finds Hamiltonian cycle
 Help -\tdisplays this help message
 Export - exports the graph to tikz
 Exit -\texits the program""")
