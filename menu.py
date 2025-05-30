@@ -57,7 +57,7 @@ def command_handler():
         
 
 def generate_graph_mode(expect_saturation=True):
-    header(f"=== {'' if expect_saturation else 'Non '}Hamilton Graph  ===","-"),
+    header(f"=== {'' if expect_saturation else 'Non '}Hamiltonian Graph  ===","-"),
     nodes, saturation = prompt_graph_input(expect_saturation)
 
     global graph_data
@@ -65,6 +65,6 @@ def generate_graph_mode(expect_saturation=True):
         graph_data = generate_hamilton(nodes, count_edges(nodes, saturation))
     else:
         graph_data = generate_non_hamilton(nodes, count_edges(nodes, 50))
-    header(f"{'' if expect_saturation else 'Non '}Hamilton Graph generated!","-")
+    header(f"{'' if expect_saturation else 'Non '}Hamiltonian Graph generated!","-")
 
     command_handler()
