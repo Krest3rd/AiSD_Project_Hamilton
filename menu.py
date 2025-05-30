@@ -11,23 +11,27 @@ graph_data = None
 
 
 def prompt_graph_input(expect_saturation=False):
-    try:
-        nodes = int(input("nodes> ").strip())
-        if nodes < 2 + (0 if expect_saturation else 1):
-            raise ValueError
-        saturation = None
-        if expect_saturation:
-            saturation = int(input("saturation> ").strip())
-            if saturation < 0 or saturation > 100:
+    while True:
+        try:
+            nodes = int(input("nodes> ").strip())
+            if nodes < 2 + (0 if expect_saturation else 1):
                 raise ValueError
-            
-        return nodes, saturation
-    except ValueError:
-        invalid_input(2 + (0 if expect_saturation else 1))
-    except EOFError:
-        invalid_eof()
-    except KeyboardInterrupt:
-        invalid_keyboard_interrupt()
+            saturation = None
+            if expect_saturation:
+                saturation = int(input("saturation> ").strip())
+                if saturation < 0 or saturation > 100:
+                    raise ValueError
+                
+            return nodes, saturation
+        except ValueError:
+            invalid_input(2 + (0 if expect_saturation else 1))
+            continue
+        except EOFError:
+            invalid_eof()
+            break
+        except KeyboardInterrupt:
+            invalid_keyboard_interrupt()
+            break
 
 def command_handler():    
     while True:
