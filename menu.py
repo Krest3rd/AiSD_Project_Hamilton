@@ -14,7 +14,7 @@ def prompt_graph_input(expect_saturation=False):
     while True:
         try:
             nodes = int(input("nodes> ").strip())
-            if nodes < 2 + (0 if expect_saturation else 1):
+            if nodes <= 2 + (0 if expect_saturation else 1):
                 raise ValueError
             saturation = None
             if expect_saturation:
